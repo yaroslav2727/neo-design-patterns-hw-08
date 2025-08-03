@@ -5,14 +5,14 @@ export class RenderEventPublisher {
   private static subscribers = new Set<RenderEventSubscriber>();
 
   static subscribe(subscriber: RenderEventSubscriber): void {
-    // TODO: Implement the subscribe method
+    this.subscribers.add(subscriber);
   }
 
   static unsubscribe(subscriber: RenderEventSubscriber): void {
-    // TODO: Implement the unsubscribe method
+    this.subscribers.delete(subscriber);
   }
 
   static notify(context: RenderContext): void {
-    // TODO: Implement the notify method
+    this.subscribers.forEach((subscriber) => subscriber.update(context));
   }
 }
